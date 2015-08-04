@@ -9,6 +9,7 @@ public class MyRunnable implements Runnable {
 		System.out.println("Thread start");
 		try {
 			while (count < 5) {
+				System.out.println(count + " Thread sleep");
 				Thread.sleep(50);
 				count++;
 			}
@@ -23,8 +24,9 @@ public class MyRunnable implements Runnable {
 		MyRunnable r = new MyRunnable();
 		Thread t = new Thread(r);
 		t.start();
-		while (r.count != 5) {
+		while (r.count < 5) {
 			try {
+				System.out.println(r.count + " Main Thread sleep");
 				Thread.sleep(25);
 			}
 			catch (InterruptedException e) {
